@@ -1,4 +1,4 @@
-# syntax=docker/dockerfile:1.7
+# syntax=docker/dockerfile:1.4
 FROM python:3.11-slim AS base
 
 ENV PYTHONDONTWRITEBYTECODE=1 \
@@ -8,16 +8,21 @@ ENV PYTHONDONTWRITEBYTECODE=1 \
 
 WORKDIR /app
 
-RUN apt-get update && apt-get install -y --no-install-recommends \
-    curl ca-certificates build-essential \
-    && rm -rf /var/lib/apt/lists/*
+RUN set -eux; \
+    apt-get update; \
+    apt-get install -y --no-install-recommends \
+        curl ca-certificates build-essential \
+    ; rm -rf /var/lib/apt/lists/*
+
+RUN mkdir -p "$TMPDIR"
 
 RUN curl -LsSf https://astral.sh/uv/install.sh | sh
 ENV PATH="/root/.local/bin:${PATH}"
 
 # ------- deps layer (cacheable) ---------
 COPY pyproject.toml uv.lock* ./
-RUN uv sync --frozen --no-dev
+RUN --mount=type=cache,target=/root/.cache uv sync --frozen --no-dev
+# RUN uv sync --frozen --no-dev
 
 ENV PATH="app/.venv/bin:${PATH}"
 
