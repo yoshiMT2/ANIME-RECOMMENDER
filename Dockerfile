@@ -14,8 +14,6 @@ RUN set -eux; \
         curl ca-certificates build-essential \
     ; rm -rf /var/lib/apt/lists/*
 
-RUN mkdir -p "$TMPDIR"
-
 RUN curl -LsSf https://astral.sh/uv/install.sh | sh
 ENV PATH="/root/.local/bin:${PATH}"
 
