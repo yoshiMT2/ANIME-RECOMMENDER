@@ -1,0 +1,61 @@
+[build-system]
+requires = ["setuptools>=69", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "p1"
+version = "0.1.0"
+authors = [{ name = "yoshiMT2" }]
+description = ""
+readme = "README.md"
+requires-python = ">=3.9"
+# ⬇️ Paste the lines from requirements.txt here, one per entry.
+dependencies = [
+    'langchain',
+    'langchain-community',
+    'langchain_openai',
+    'chromadb',
+    'streamlit',
+    'pandas',
+    'python-dotenv',
+    'sentence-transformers',
+    'langchain_huggingface',
+    'pydantic-settings>2',
+    "langchain-chroma>=0.2.6",
+]
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["*"]
+exclude = ["tests*", "docs*"]
+
+[tool.ruff]
+line-length = 100
+target-version = 'py311'
+
+[tool.ruff.lint]
+select = [
+  "E",   # pycodestyle errors
+  "F",   # pyflakes
+  "I",   # isort (import sorting)
+  "B",   # flake8-bugbear
+  "UP",  # pyupgrade
+  "PL",  # pylint (subset)
+]
+ignore = [
+  "E501",
+]
+
+[tool.ruff.lint.isort]
+known-first-party = ["src"]
+combine-as-imports = true
+
+[tool.ruff.format]
+quote-style = "single"
+indent-style = "space"
+docstring-code-format = true
+
+[dependency-groups]
+dev = [
+    "ruff>=0.14.4",
+]

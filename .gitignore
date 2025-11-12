@@ -1,0 +1,62 @@
+# --- OS / Editor ---
+.DS_Store
+Thumbs.db
+.vscode/
+
+# --- Python build artifacts ---
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.so
+.build/
+build/
+dist/
+*.egg-info/
+.eggs/
+pip-wheel-metadata/
+
+# --- Virtual environments ---
+.venv/
+venv/
+env/
+
+# --- Caches / tooling ---
+.cache/
+.ruff_cache/
+.mypy_cache/
+.pytest_cache/
+.tox/
+.nox/
+.ipynb_checkpoints/
+
+# --- Coverage / test outputs ---
+.coverage*
+coverage.xml
+htmlcov/
+.junit/
+
+# --- Env & secrets (keep examples) ---
+.env
+.env.*
+!.env.example
+!.env.sample
+
+# --- Streamlit (often contains secrets/state) ---
+.streamlit/
+
+# --- App data / vector stores ---
+chroma_db/
+data/
+datasets/
+outputs/
+logs/
+tmp/
+temp/
+
+# --- Node (just in case) ---
+node_modules/
+
+# --- Docker / K8s local overrides (keep Dockerfile & k8.yml) ---
+*.local.yaml
+    

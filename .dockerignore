@@ -1,0 +1,25 @@
+# Python/venv
+.venv
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Dev/editor
+.vscode
+.git
+.gitignore
+*.log
+
+# Build/metadata
+*.egg-info
+dist/
+build/
+
+# Data & local caches
+chroma_db/
+.cache/
+.streamlit/
+
+# Env files (inject at runtime instead)
+.env
