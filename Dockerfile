@@ -17,9 +17,7 @@ ENV PATH="/root/.local/bin:${PATH}"
 
 # ------- deps layer (cacheable) ---------
 COPY pyproject.toml uv.lock* ./
-
-RUN --mount-type=cache,target=/root/.cache \
-    uv sync --prozen --no-dev
+RUN uv sync --prozen --no-dev
 
 ENV PATH="app/.venv/bin:${PATH}"
 
