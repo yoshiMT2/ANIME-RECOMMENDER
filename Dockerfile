@@ -22,7 +22,7 @@ COPY pyproject.toml uv.lock* ./
 RUN --mount=type=cache,target=/root/.cache uv sync --frozen --no-dev
 # RUN uv sync --frozen --no-dev
 
-ENV PATH="app/.venv/bin:${PATH}"
+ENV PATH="/app/.venv/bin:${PATH}"
 
 # --- app layer ---
 COPY . .
